@@ -27,7 +27,7 @@ with st.expander("About this Project", expanded=False):
     - **Police Precincts**: Displays police precinct locations and information.
     - **Streetlights**: Locates all streetlights in Berlin to differentiate between illuminated and dark streets at night.
     
-    The key idea of the project is to provide user with clearly visualized data from official open-source data available for the city of Berlin.
+    The key idea of the project is to provide user with clearly visualized data from official open sources available for the city of Berlin.
     The data should help analyze the safety level of Berlin from different perspectives and dimensions by looking at the city and its districts as a whole.
     The map feature and the ability of the user to integrate with it to display and view different types of data should help
     researchers, governmental institutions and Berlin's citizens who wish to know how safe they are in this large city.
