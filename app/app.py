@@ -176,15 +176,15 @@ elif selected_layer == "Crime Data":
     # Add crime data to the map
     for _, row in crime_data_in_district.iterrows():
         coords = row['geometry'].centroid.coords[0][::-1]  
-        popup_html = f"<h1>Crime Data ({row['Jahr']})</h1><br>"
-        popup_html += f"<h5>Total Crimes: {row['Gesamt']}</h5><br>"
-        popup_html += f"<h5>Robbery: {row['Raub']}</h5><br>"
-        popup_html += f"<h5>Street Robbery: {row['Straßenraub']}</h5><br>"
-        popup_html += f"<h5>Assault: {row['Körperverletzung']}</h5><br>"
-        popup_html += f"<h5>Serious Assault: {row['schwere Körperverletzung']}</h5><br>"
-        popup_html += f"<h5>Deprivation of Liberty:{row['Freiheitsberaubung']}</h5><br>"
-        popup_html += f"<h5>Theft: {row['Diebstahl']}</h5><br>"
-        popup_html += f"<h5>Other Crimes: {row['Other']}</h5><br>"
+        popup_html = f"<h5>Crime Data ({row['Jahr']})</b><br>"
+        popup_html += f"<b>Total Crimes: {row['Gesamt']}</b><br>"
+        popup_html += f"<b>Robbery: {row['Raub']}</b><br>"
+        popup_html += f"<b>Street Robbery: {row['Straßenraub']}</b><br>"
+        popup_html += f"<b>Assault: {row['Körperverletzung']}</b><br>"
+        popup_html += f"<b>Serious Assault: {row['schwere Körperverletzung']}</b><br>"
+        popup_html += f"<b>Deprivation of Liberty:{row['Freiheitsberaubung']}</b><br>"
+        popup_html += f"<b>Theft: {row['Diebstahl']}</b><br>"
+        popup_html += f"<b>Other Crimes: {row['Other']}</b><br>"
         
         folium.Marker(
             location=coords,
@@ -220,11 +220,11 @@ elif selected_layer == "Traffic Data":
                     color='blue',
                     weight=5,
                     popup=folium.Popup(
-                        f"<h1>Segment ID: {segment_id}</h1><br>"
-                        f"<h5>Hour: {selected_hour}</h5><br>"
-                        f"<h5>Cars: {avg_car}</h5><br>"
-                        f"<h5>Bikes: {avg_bike}</h5><br>"
-                        f"<h5>Pedestrians: {avg_pedestrian}</h5><br>",
+                        f"<h5>Segment ID: {segment_id}</h5><br>"
+                        f"<b>Hour: {selected_hour}</b><br>"
+                        f"<b>Cars: {avg_car}</b><br>"
+                        f"<b>Bikes: {avg_bike}</b><br>"
+                        f"<b>Pedestrians: {avg_pedestrian}</b><br>",
                         max_width=1000
                     )
                 ).add_to(m)
@@ -234,10 +234,10 @@ elif selected_layer == "Police Precincts":
     police_in_district = police_precincts[police_precincts.geometry.within(district.geometry.squeeze())]
 
     for _, precinct in police_in_district.iterrows():
-        popup_html = f"<h1>Police Precinct</h1><br>"
-        popup_html += f"<h5>Address:</b> {precinct['pointOfContact|Contact|address|AddressRepresentation|thoroughfare|GeographicalName|spelling|SpellingOfName|text']}, {precinct['locatorDesignator']}, {precinct['postCode']}</h5><br>"
-        popup_html += f"<h5>Phone:</b> {precinct['telephoneVoice']}</h5><br>"
-        popup_html += f"<h5>Website:</b> <a href='{precinct['website']}' target='_blank'>{precinct['website']}</a></h5><br>"
+        popup_html = f"<h5>Police Precinct</h5><br>"
+        popup_html += f"<b>Address:</b> {precinct['pointOfContact|Contact|address|AddressRepresentation|thoroughfare|GeographicalName|spelling|SpellingOfName|text']}, {precinct['locatorDesignator']}, {precinct['postCode']}</b><br>"
+        popup_html += f"<b>Phone:</b> {precinct['telephoneVoice']}</b><br>"
+        popup_html += f"<b>Website:</b> <a href='{precinct['website']}' target='_blank'>{precinct['website']}</a></b><br>"
 
         # Extract coordinates from geometry
         coordinates = precinct.geometry.coords[0]
