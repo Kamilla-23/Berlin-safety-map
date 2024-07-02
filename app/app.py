@@ -176,7 +176,7 @@ elif selected_layer == "Crime Data":
     # Add crime data to the map
     for _, row in crime_data_in_district.iterrows():
         coords = row['geometry'].centroid.coords[0][::-1]  
-        popup_html = f"<h5>Crime Data ({row['Jahr']})</b><br>"
+        popup_html = f"<h5>Crime Data ({row['Jahr']})</h5><br>"
         popup_html += f"<b>Total Crimes: {row['Gesamt']}</b><br>"
         popup_html += f"<b>Robbery: {row['Raub']}</b><br>"
         popup_html += f"<b>Street Robbery: {row['Straßenraub']}</b><br>"
@@ -220,7 +220,7 @@ elif selected_layer == "Traffic Data":
                     color='blue',
                     weight=5,
                     popup=folium.Popup(
-                        f"<h5>Segment ID: {segment_id}</h5><br>"
+                        f"<b>Segment ID: {segment_id}</b><br>"
                         f"<b>Hour: {selected_hour}</b><br>"
                         f"<b>Cars: {avg_car}</b><br>"
                         f"<b>Bikes: {avg_bike}</b><br>"
