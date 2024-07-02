@@ -235,7 +235,7 @@ elif selected_layer == "Police Precincts":
 
     for _, precinct in police_in_district.iterrows():
         popup_html = f"<h1>Police Precinct</h1><br>"
-        popup_html += f"<h5>Address:</b> {precinct["pointOfContact|Contact|address|AddressRepresentation|thoroughfare|GeographicalName|spelling|SpellingOfName|text"]}, {precinct['locatorDesignator']}, {precinct['postCode']}</h5><br>"
+        popup_html += f"<h5>Address:</b> {precinct['pointOfContact|Contact|address|AddressRepresentation|thoroughfare|GeographicalName|spelling|SpellingOfName|text']}, {precinct['locatorDesignator']}, {precinct['postCode']}</h5><br>"
         popup_html += f"<h5>Phone:</b> {precinct['telephoneVoice']}</h5><br>"
         popup_html += f"<h5>Website:</b> <a href='{precinct['website']}' target='_blank'>{precinct['website']}</a></h5><br>"
 
