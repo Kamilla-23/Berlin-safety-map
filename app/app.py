@@ -11,6 +11,8 @@ from pyproj import Transformer
 import pandas as pd
 import get_crime
 
+st.set_page_config(layout="wide")
+
 st.title("Berlin Safety Map")
 
 # Expandable "About" section at the top of the page
@@ -30,7 +32,7 @@ with st.expander("About this Project", expanded=False):
     The map feature and the ability of the user to integrate with it to display and view different types of data should help
     researchers, governmental institutions and Berlin's citizens who wish to know how safe they are in this large city.
     
-    For more technical details, visit our GitHub repository(https://github.com/Kamilla-23/Map).
+    For more technical details, visit our GitHub repository(https://github.com/Kamilla-23/Berlin-safety-map).
     """)
 
 # Cache the function for loading district boundaries
@@ -174,19 +176,19 @@ elif selected_layer == "Crime Data":
     # Add crime data to the map
     for _, row in crime_data_in_district.iterrows():
         coords = row['geometry'].centroid.coords[0][::-1]  
-        popup_html = f"<b>Crime Data ({row['Jahr']})</b><br>"
-        popup_html += f"<b>Total Crimes:</b> {row['Gesamt']}<br>"
-        popup_html += f"<b>Robbery:</b> {row['Raub']}<br>"
-        popup_html += f"<b>Street Robbery:</b> {row['Straßenraub']}<br>"
-        popup_html += f"<b>Assault:</b> {row['Körperverletzung']}<br>"
-        popup_html += f"<b>Serious Assault:</b> {row['schwere Körperverletzung']}<br>"
-        popup_html += f"<b>Deprivation of Liberty:</b> {row['Freiheitsberaubung']}<br>"
-        popup_html += f"<b>Theft:</b> {row['Diebstahl']}<br>"
-        popup_html += f"<b>Other Crimes:</b> {row['Other']}<br>"
+        popup_html = f"<h1>Crime Data ({row['Jahr']})</h1><br>"
+        popup_html += f"<h5>Total Crimes: {row['Gesamt']}</h5><br>"
+        popup_html += f"<h5>Robbery: {row['Raub']}</h5><br>"
+        popup_html += f"<h5>Street Robbery: {row['Straßenraub']}</h5><br>"
+        popup_html += f"<h5>Assault: {row['Körperverletzung']}</h5><br>"
+        popup_html += f"<h5>Serious Assault: {row['schwere Körperverletzung']}</h5><br>"
+        popup_html += f"<h5>Deprivation of Liberty:{row['Freiheitsberaubung']}</h5><br>"
+        popup_html += f"<h5>Theft: {row['Diebstahl']}</h5><br>"
+        popup_html += f"<h5>Other Crimes: {row['Other']}</h5><br>"
         
         folium.Marker(
             location=coords,
-            popup=folium.Popup(popup_html, max_width=500),
+            popup=folium.Popup(popup_html, max_width=1000),
             icon=folium.Icon(color='green', icon='info-sign')
         ).add_to(m)
 
@@ -218,12 +220,12 @@ elif selected_layer == "Traffic Data":
                     color='blue',
                     weight=5,
                     popup=folium.Popup(
-                        f"Segment ID: {segment_id}<br>"
-                        f"Hour: {selected_hour}<br>"
-                        f"Cars: {avg_car}<br>"
-                        f"Bikes: {avg_bike}<br>"
-                        f"Pedestrians: {avg_pedestrian}<br>",
-                        max_width=500
+                        f"<h1>Segment ID: {segment_id}</h1><br>"
+                        f"<h5>Hour: {selected_hour}</h5><br>"
+                        f"<h5>Cars: {avg_car}</h5><br>"
+                        f"<h5>Bikes: {avg_bike}</h5><br>"
+                        f"<h5>Pedestrians: {avg_pedestrian}</h5><br>",
+                        max_width=1000
                     )
                 ).add_to(m)
 
@@ -232,10 +234,10 @@ elif selected_layer == "Police Precincts":
     police_in_district = police_precincts[police_precincts.geometry.within(district.geometry.squeeze())]
 
     for _, precinct in police_in_district.iterrows():
-        popup_html = f"<b>Police Precinct</b><br>"
-        popup_html += f"<b>Address:</b> {precinct['text']}, {precinct['locatorDesignator']}, {precinct['postCode']}<br>"
-        popup_html += f"<b>Phone:</b> {precinct['telephoneVoice']}<br>"
-        popup_html += f"<b>Website:</b> <a href='{precinct['website']}' target='_blank'>{precinct['website']}</a><br>"
+        popup_html = f"<h1>Police Precinct</h1><br>"
+        popup_html += f"<h5>Address:</b> {precinct["pointOfContact|Contact|address|AddressRepresentation|thoroughfare|GeographicalName|spelling|SpellingOfName|text"]}, {precinct['locatorDesignator']}, {precinct['postCode']}</h5><br>"
+        popup_html += f"<h5>Phone:</b> {precinct['telephoneVoice']}</h5><br>"
+        popup_html += f"<h5>Website:</b> <a href='{precinct['website']}' target='_blank'>{precinct['website']}</a></h5><br>"
 
         # Extract coordinates from geometry
         coordinates = precinct.geometry.coords[0]
