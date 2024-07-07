@@ -272,3 +272,12 @@ st.sidebar.image("./app/static/berlin.png", caption='Contributors: Enes, Jinlin,
 
 # Display the map with Streamlit
 st_folium(m, width=1400, height=1000)
+
+def convert_gml_to_geojson(gml_file, geojson_file):
+    gdf = gpd.read_file(gml_file, layer='US_Polizei')
+    gdf.to_file(geojson_file, driver='GeoJSON')
+
+if __name__ == '__main__':
+    gml_file = 'US_Polizei.gml'
+    geojson_file = 'polizeiabschnitte.geojson'
+    convert_gml_to_geojson(gml_file, geojson_file)

@@ -32,7 +32,7 @@ def fetch_and_process_all_segments(data_folder):
     # Iterate through JSON files in the specified folder
     for filename in os.listdir(data_folder):
         if filename.endswith(".json"):
-            segment_id = filename.split('.')[0]  # Assuming the segment ID is the file name without extension
+            segment_id = filename.split('.')[0]
             file_path = os.path.join(data_folder, filename)
             
             with open(file_path, 'r') as file:
