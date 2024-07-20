@@ -2,8 +2,8 @@ import pandas as pd
 import geopandas as gpd
 import os
 
-PATH = "./app/crime_data.xlsx"
-GEO_PATH = "./app/bezirksgrenzen.geojson"
+PATH = "crime_data.xlsx"
+GEO_PATH = "bezirksgrenzen.geojson"
 
 BEZIRKE = ["Mitte", "Friedrichshain-Kreuzberg", "Pankow", "Charlottenburg-Wilmersdorf", "Spandau", "Steglitz-Zehlendorf", "Tempelhof-Schöneberg", "Neukölln", "Treptow-Köpenick", "Marzahn-Hellersdorf", "Lichtenberg", "Reinickendorf"]
 STRAFTATEN = ["Bezeichnung (Bezirksregion)", "Straftaten \n-insgesamt-", "Raub", "Straßenraub,\nHandtaschen-raub", "Körper-verletzungen \n-insgesamt-", "Gefährl. und schwere Körper-verletzung", "Freiheits-beraubung, Nötigung,\nBedrohung, Nachstellung", "Diebstahl \n-insgesamt-"]
